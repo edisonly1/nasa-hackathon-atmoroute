@@ -1,0 +1,7 @@
+{
+  "geometry_type": "pin",
+  "geometry_geojson": { "type": "Point", "coordinates": [-84.39, 33.78] },
+  "date": "2025-10-12",
+  "thresholds": { "precip_mmhr": 1, "wind_mph": 25, "heatindex_F": 95, "rh_pct": 80 },
+  "window_days": 7
+}

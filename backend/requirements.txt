@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+pydantic
+shapely
+numpy
+python-dateutil
+xarray
+netCDF4
+pydap
+requests
+pandas
+numpy
+shapely
+pyproj

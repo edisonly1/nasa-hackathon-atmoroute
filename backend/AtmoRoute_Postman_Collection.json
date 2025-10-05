@@ -1,0 +1,144 @@
+{
+  "info": {
+    "name": "AtmoRoute Backend (MVP)",
+    "_postman_id": "facf0815-62a4-43b4-926c-08918c6b6e68",
+    "description": "Postman collection for AtmoRoute FastAPI MVP: /health, /api/meta, /api/poe, /api/event, /api/event/{id}/export.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BASE_URL}}/health",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Meta",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BASE_URL}}/api/meta",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "api",
+            "meta"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PoE (pin)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"geometry_type\": \"pin\",\n  \"geometry_geojson\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      -84.334,\n      34.023\n    ]\n  },\n  \"date\": \"2025-07-15\",\n  \"variables\": [\n    \"precip_mmhr\",\n    \"temp_F\",\n    \"wind_mph\",\n    \"rh_pct\"\n  ],\n  \"thresholds\": {\n    \"precip_mmhr\": 1.0,\n    \"temp_F\": 90,\n    \"wind_mph\": 20,\n    \"rh_pct\": 85\n  },\n  \"window_days\": 7\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/poe",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "api",
+            "poe"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Event (area)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"geometry_type\": \"area\",\n  \"geometry_geojson\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          -84.34,\n          34.02\n        ],\n        [\n          -84.33,\n          34.02\n        ],\n        [\n          -84.33,\n          34.03\n        ],\n        [\n          -84.34,\n          34.03\n        ],\n        [\n          -84.34,\n          34.02\n        ]\n      ]\n    ]\n  },\n  \"start_ts\": \"2025-07-15T18:00:00Z\",\n  \"duration_min\": 120,\n  \"step_min\": 30,\n  \"thresholds\": {\n    \"evs_min\": 70\n  }\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/event",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "api",
+            "event"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('store event_id', function () {",
+              "  var json = pm.response.json();",
+              "  pm.collectionVariables.set('EVENT_ID', json.event_id);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Export CSV",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BASE_URL}}/api/event/{{EVENT_ID}}/export?format=csv",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "api",
+            "event",
+            "{{EVENT_ID}}",
+            "export"
+          ],
+          "query": [
+            {
+              "key": "format",
+              "value": "csv"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "EVENT_ID",
+      "value": ""
+    }
+  ]
+}

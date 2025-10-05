@@ -27,10 +27,10 @@ interface LeafletMapProps {
   isDroppingPin?: boolean;
   drawingEnabled?: boolean;
 
-  /** NEW: Fired whenever routes change (create/edit/delete). */
+  
   onRoutesChange?: (e: RoutesChange) => void;
 
-  /** Back-compat: fired only for the most recent created geometry. */
+  
   onDraw?: (geom: GeoJSON.LineString | GeoJSON.Polygon) => void;
 
   points?: EVSPoint[];
@@ -122,14 +122,14 @@ function DrawControl({
   useEffect(() => {
     if (!map) return;
 
-    // persistent group that holds all user-drawn layers
+    // persistent group that holds all user drawn layers
     const fg = featureGroupRef.current ?? new L.FeatureGroup();
     if (!featureGroupRef.current) {
       featureGroupRef.current = fg;
       map.addLayer(fg);
     }
 
-    // ROUTE-ONLY drawing: allow polylines; disable polygons/markers
+    // route drawing: allow polylines; disable polygons/markers
     const drawControl = new (L as any).Control.Draw({
       edit: { featureGroup: fg, remove: true },
       draw: {
@@ -146,7 +146,7 @@ function DrawControl({
 
     function handleCreated(e: any) {
       const layer = e.layer as L.Layer;
-      // persist this layer in the FG so it doesn't "disappear"
+      
       fg.addLayer(layer);
 
       // Back-compat single-geom callback
@@ -169,8 +169,8 @@ function DrawControl({
       map.off((L as any).Draw.Event.EDITED, handleEdited);
       map.off((L as any).Draw.Event.DELETED, handleDeleted);
       map.removeControl(drawControl);
-      // keep the FG so shapes persist across re-renders; remove if you want cleanup:
-      // map.removeLayer(fg);
+      // keep the FG so shapes persist across re renders
+      // map.removeLayer(fg)
     };
   }, [map, featureGroupRef, onAnyChange, onCreatedGeom]);
 

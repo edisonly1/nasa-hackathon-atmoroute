@@ -8,7 +8,7 @@ import { normalizeThresholds, PoeThresholds } from "@/lib/thresholds";
 
 type EvsPoint = { lat: number; lon: number; value: number };
 
-// ---- helpers to normalize backend shapes ---------------------------------
+// helpers
 
 function extractPoeMap(out: any): Record<string, number> | null {
   if (!out) return null;
@@ -32,12 +32,12 @@ function extractHistForVar(out: any, k: string): HistData | null {
   const obj = res?.results?.[k];
   if (!obj) return null;
 
-  // New-style { hist: { bins, pdf } }
+  // { hist: { bins, pdf } }
   if (obj?.hist && Array.isArray(obj.hist.bins) && Array.isArray(obj.hist.pdf)) {
     return { bins: obj.hist.bins as number[], pdf: obj.hist.pdf as number[] };
   }
 
-  // Legacy array hist (no bins)
+  
   if (Array.isArray(obj.hist)) {
     const arr = obj.hist as number[];
     return { bins: Array.from({ length: arr.length }, (_, i) => i), pdf: arr };
@@ -85,7 +85,7 @@ function toDateOnlyUTC(input: string): string {
     .slice(0, 10);
 }
 
-// ---- component ------------------------------------------------------------
+// component
 
 export default function EventCorridorView({
   dateStr,
@@ -133,8 +133,8 @@ export default function EventCorridorView({
             window_days: windowDays,
             lat,
             lon,
-            thresholds: th,           // <- normalized, complete numbers
-            mode: "climo",            // for reanalysis sub-daily, pass full datetime instead
+            thresholds: th,           
+            mode: "climo",            
           })
         )
       );
@@ -220,7 +220,7 @@ export default function EventCorridorView({
     }
   }, [midpoints, dateStr, windowDays, thresholds]);
 
-  // ---- downloads ----------------------------------------------------------
+  // downloads
 
   function downloadCSV() {
     if (!rawPointResults.length) return;
@@ -269,7 +269,7 @@ export default function EventCorridorView({
     );
   }
 
-  // ---- UI -----------------------------------------------------------------
+  // UI
 
   return (
     <div className="space-y-4">

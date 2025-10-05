@@ -69,7 +69,7 @@ const Sidebar = ({
   running,
   errorMsg,
 }: SidebarProps) => {
-  // Defensive fallbacks to avoid "cannot read properties of undefined"
+  
   const safeThresholds: Thresholds = thresholds ?? {};
   const safeOnChange = onChangeThreshold ?? {
     precip_mm_day: (_v: string) => {},

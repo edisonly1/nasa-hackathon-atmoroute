@@ -5,7 +5,7 @@ export const DEFAULT_THRESHOLDS = {
   precip_mm_day: 10,
   wind_mph: 20,
   rh_pct: 80,
-  heatindex_F: 90, // change to 95 if you prefer
+  heatindex_F: 90,
 };
 
 export type PoeThresholds = {

@@ -119,14 +119,14 @@ const Index = () => {
         <main className="flex-1 overflow-y-auto p-4 md:p-6">
           {activeView === "corridor" ? (
             <EventCorridorView
-              // ← now driven by the sidebar
+              
               dateStr={poeDate}
               windowDays={Number(poeWindowDays) || 14}
               thresholds={thresholds}
             />
           ) : (
             <PointPoeView
-              // PointPoeView is presentational; it reads state and triggers run
+              
               lat={lat}
               lon={lon}
               setLat={setLat}

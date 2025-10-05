@@ -1,0 +1,77 @@
+# Dependencies
+**/node_modules/
+
+
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+.venv/
+venv/
+env/
+
+# ---- OS / Editor cruft ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ---- Root-level common ----
+*.log
+logs/
+*.sqlite
+*.sqlite3
+*.db
+
+# ---- Frontend (Vite/React) ----
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.parcel-cache/
+frontend/coverage/
+frontend/.eslintcache
+frontend/.turbo/
+frontend/.cache/
+frontend/.nyc_output/
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# Build outputs (if you use build/)
+build/
+dist/
+
+# ---- Backend (FastAPI/Python) ----
+backend/__pycache__/
+backend/.pytest_cache/
+backend/.mypy_cache/
+backend/.ruff_cache/
+backend/.coverage
+backend/coverage/
+backend/.venv/
+backend/venv/
+backend/env/
+backend/.env
+backend/.env.*
+!backend/.env.example
+backend/*.pid
+backend/uvicorn*.log
+
+# Python bytecode anywhere
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+
+# ---- Test/Reports ----
+coverage/
+.nyc_output/
+
+# ---- Misc / tooling ----
+*.tgz
+*.tar
+*.zip
+.tmp/
+temp/

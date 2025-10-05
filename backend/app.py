@@ -13,6 +13,17 @@ import logging
 app = FastAPI(title="Will it Rain on My Parade?", version="0.9.0")
 logger = logging.getLogger("uvicorn")
 
+FRONTEND_ORIGIN = "https://fantastic-tribble-g4wqj9gj6ggjhg46-8080.app.github.dev"
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[FRONTEND_ORIGIN],           # exact, no trailing slash
+    allow_origin_regex=r"https://.*\.(githubpreview|app\.github)\.dev",
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 #Request logging (tiny)
 @app.middleware("http")
 async def _log_paths(request, call_next):

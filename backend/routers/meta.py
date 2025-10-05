@@ -33,7 +33,6 @@ UNITS = {
 def get_meta():
     datasets = [
         "NASA POWER (daily point): T2M_MAX, T2M_MIN, T2M, RH2M, WS10M",
-        "Data Rods for Hydrology (daily point): precipitation",
     ]
     sources = [
         "POWER API (JSON/CSV); no Earthdata login required",

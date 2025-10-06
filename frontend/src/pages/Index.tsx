@@ -5,6 +5,7 @@ import Sidebar from "@/components/weather/Sidebar";
 import EventCorridorView from "@/components/weather/EventCorridorView";
 import PointPoeView from "@/components/weather/PointPoeView";
 import { postPoe } from "@/api/endpoints";
+import AIInsightCard from "@/components/weather/AIInsightCard";
 
 type Thresholds = {
   precip_mm_day?: number;
@@ -119,26 +120,28 @@ const Index = () => {
         <main className="flex-1 overflow-y-auto p-4 md:p-6">
           {activeView === "corridor" ? (
             <EventCorridorView
-              
               dateStr={poeDate}
               windowDays={Number(poeWindowDays) || 14}
               thresholds={thresholds}
             />
           ) : (
-            <PointPoeView
-              
-              lat={lat}
-              lon={lon}
-              setLat={setLat}
-              setLon={setLon}
-              isDroppingPin={isDroppingPin}
-              setIsDroppingPin={setIsDroppingPin}
-              dateStr={poeDate}
-              thresholds={thresholds}
-              onRun={runPoe}
-              loading={loading}
-              out={out}
-            />
+            <>
+              <PointPoeView
+                lat={lat}
+                lon={lon}
+                setLat={setLat}
+                setLon={setLon}
+                isDroppingPin={isDroppingPin}
+                setIsDroppingPin={setIsDroppingPin}
+                dateStr={poeDate}
+                thresholds={thresholds}
+                onRun={runPoe}
+                loading={loading}
+                out={out}
+              />
+              {/* NEW: AI card directly under PoE view */}
+              <AIInsightCard lat={lat} lon={lon} />
+            </>
           )}
         </main>
       </div>

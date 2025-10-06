@@ -12,3 +12,6 @@ pandas
 numpy
 shapely
 pyproj
+joblib
+scikit-learn>=1.4
+lightgbm

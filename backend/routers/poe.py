@@ -10,7 +10,6 @@ from typing import List
 
 from schemas.poe import PoEReq, Metric  
 from services.power import fetch_power_point
-from services.datarods import datarods_precip_series
 from services.poe_generic import compute_generic_poe
 
 router = APIRouter(tags=["poe"])

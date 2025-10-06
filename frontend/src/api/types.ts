@@ -50,3 +50,18 @@ export interface PoeResponse {
   histograms: Record<string, unknown>;
   meta: { units?: Record<string,string>; sources?: string[]; notes?: string; [k: string]: any };
 }
+
+
+// AI
+export interface AIScoreResponse {
+  p_ge_70: number;                   // probability EVS >= 70 (0..1)
+  conf: [number, number];            // confidence interval (0..1)
+  location?: [number, number];       // present for /ai/realtime
+  features_used?: Record<string, number>;
+}
+
+export interface LLMBriefResponse {
+  p_ge_70: number;
+  conf: [number, number];
+  brief: string;                     // short offline NLG summary
+}

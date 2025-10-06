@@ -26,16 +26,16 @@ Features
 - Responsive UI — Built with React, TypeScript, and Tailwind CSS.
 
 ## Data sources
-NASA POWER (Prediction of Worldwide Energy Resources)
+1. NASA POWER (Prediction of Worldwide Energy Resources)
 https://power.larc.nasa.gov/
-MERRA-2 Reanalysis Data — Temperature, wind, precipitation, humidity
+2. MERRA-2 Reanalysis Data — Temperature, wind, precipitation, humidity
 https://gmao.gsfc.nasa.gov/reanalysis/MERRA-2/
-NLDAS Data Rods
+3. NLDAS Data Rods
 https://disc.gsfc.nasa.gov/information/tools?title=Data%20Rods
 
 ## Links
-Web App 
+1. Web App 
 [https://nasa-hackathon-atmoroute.vercel.app](https://nasa-hackathon-atmoroute.vercel.app/)
 
-Team Link
+2. Team Link
 [https://www.spaceappschallenge.org/2025/challenges/will-it-rain-on-my-parade/](https://www.spaceappschallenge.org/2025/find-a-team/snakes/?tab=details)

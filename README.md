@@ -13,13 +13,13 @@ Runs on CPU laptops, uses only open data, and is explainable by design.
 
 ---
 
-## The challenge (in one sentence)
+## The challenge
 
 [https://www.spaceappschallenge.org/2025/challenges/will-it-rain-on-my-parade/]
 
 ---
 
-## How it works (one paragraph)
+## How it works
 
 For each point along your route and chosen date, we query **historical daily NASA POWER** values at the **exact latitude/longitude** for the **same day-of-year within ± window_days** (captures local seasonality). We build features from precipitation, wind, relative humidity, and temperatures, add smooth seasonality (sine/cosine of day-of-year), and short-term memory via recent-day lags and rolling statistics. A **LightGBM** model with **physics-guided monotone constraints** (risk never decreases as precip/wind/RH increase) predicts PoE. We **calibrate** probabilities with isotonic regression and attach **split-conformal** uncertainty bands. Segments are sampled along the polyline using **haversine (great-circle) spacing** and aggregated with driver weights into **EVS**. The UI colors segments by risk and generates an Ops Brief.
 

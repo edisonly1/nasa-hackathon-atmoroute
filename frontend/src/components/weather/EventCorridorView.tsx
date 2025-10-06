@@ -309,7 +309,7 @@ export default function EventCorridorView({
               <div className="text-muted-foreground">Draw routes and run to see EVS.</div>
             )}
             <p className="text-xs text-muted-foreground mt-2">
-              EVS is 100×(1−PoE) averaged over variables, then averaged across each route.
+              EVS is calculated across each route.
             </p>
           </CardContent>
         </Card>

@@ -5,16 +5,16 @@ If you’re planning an outdoor event—like a vacation, a hike on a trail, or f
 
 ## Structure
  -- frontend/
-Next.js (React + TypeScript) web application
-Interactive map (Leaflet / Mapbox GL JS)
-Sidebar parameter controls (date, duration, thresholds)
-CSV download for route specific data
+- Next.js (React + TypeScript) web application
+- Interactive map (Leaflet / Mapbox GL JS)
+- Sidebar parameter controls (date, duration, thresholds)
+- CSV download for route specific data
 -- backend/
-FastAPI service in Python
-/api/poe: Computes Probability of Exceedance using NASA POWER data
-/api/event: Generates corridor analysis for event routes
-/api/export: Provides CSV data export
-Built in caching and histogram computation
+- FastAPI service in Python
+- /api/poe: Computes Probability of Exceedance using NASA POWER data
+- /api/event: Generates corridor analysis for event routes
+- /api/export: Provides CSV data export
+- Built in caching and histogram computation
 
 ## Features
 Features

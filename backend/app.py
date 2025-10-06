@@ -26,31 +26,18 @@ logger = logging.getLogger("uvicorn")
 # 1) If CORS_ORIGINS="*" -> allow all
 # 2) Else use provided comma-separated origins
 # 3) Also allow Codespaces/GitHub preview domains via regex
-origins_env = os.getenv("CORS_ORIGINS", "").strip()
+ALLOWED_ORIGINS = [
+    "https://nasa-hackathon-atmoroute-rn2yhr220-edisonly2200-6605s-projects.vercel.app",  "nasa-hackathon-atmoroute.vercel.app",
+]
 
-if origins_env == "*":
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=["*"],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-else:
-    origins = [o.strip() for o in origins_env.split(",") if o.strip()]
-    # Optional hard-coded single origin for convenience (kept from your file)
-    FRONTEND_ORIGIN = "https://fantastic-tribble-g4wqj9gj6ggjhg46-8080.app.github.dev"
-    if FRONTEND_ORIGIN not in origins:
-        origins.append(FRONTEND_ORIGIN)
-
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=origins,
-        allow_origin_regex=r"https://.*\.(githubpreview|app\.github)\.dev",
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=ALLOWED_ORIGINS,     # DO NOT use "*" together with allow_credentials=True
+    allow_credentials=True,            # leave True if you send cookies/auth; ok with explicit origins
+    allow_origin_regex=r"https://.*\.vercel\.app",
+    allow_methods=["*"],               # lets the preflight announce POST
+    allow_headers=["*"],               # lets the preflight announce Content-Type, etc.
+)
 
 # request logging
 @app.middleware("http")

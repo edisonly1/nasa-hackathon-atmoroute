@@ -15,7 +15,7 @@ Runs on CPU laptops, uses only open data, and is explainable by design.
 
 ## The challenge (in one sentence)
 
-Event planners don’t need a yes/no rain icon — they need **calibrated probabilities with honest uncertainty** they can defend when choosing start times and routes.
+[https://www.spaceappschallenge.org/2025/challenges/will-it-rain-on-my-parade/]
 
 ---
 

@@ -52,9 +52,7 @@ else:
         allow_headers=["*"],
     )
 
-# -------------------------------
-# Request logging (tiny)
-# -------------------------------
+# request logging
 @app.middleware("http")
 async def _log_paths(request: Request, call_next):
     logger.info("%s %s", request.method, request.url.path)

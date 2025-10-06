@@ -5,7 +5,7 @@ If you’re planning an outdoor event—like a vacation, a hike on a trail, or f
 
 ## Structure
  -- frontend/
- Next.js (React + TypeScript) web application
+Next.js (React + TypeScript) web application
 Interactive map (Leaflet / Mapbox GL JS)
 Sidebar parameter controls (date, duration, thresholds)
 CSV download for route specific data
@@ -18,12 +18,12 @@ Built in caching and histogram computation
 
 ## Features
 Features
-Probability of Exceedance (PoE) — Statistical probability that precipitation, temperature, humidity, or wind will exceed chosen limits.
-Uses multi year NASA reanalysis data to estimate long-term seasonal probabilities for far-future events.
-Event Corridor Analysis — Evaluates routes to show risk along a parade or travel path.
-Histogram Visualization — Displays historical distributions for each weather variable.
-Data Export — One-click CSV download for PoE and histogram data.
-Responsive UI — Built with React, TypeScript, and Tailwind CSS.
+- Probability of Exceedance (PoE) — Statistical probability that precipitation, temperature, humidity, or wind will exceed chosen limits.
+- Uses multi year NASA reanalysis data to estimate long-term seasonal probabilities for far-future events.
+- Event Corridor Analysis — Evaluates routes to show risk along a parade or travel path.
+- Histogram Visualization — Displays historical distributions for each weather variable.
+- Data Export — One click CSV download for PoE and histogram data.
+- Responsive UI — Built with React, TypeScript, and Tailwind CSS.
 
 ## Data sources
 NASA POWER (Prediction of Worldwide Energy Resources)
